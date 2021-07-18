@@ -8,7 +8,7 @@ Each test model is observed by development teams, who improve it using different
 The test procedure through the COVID-19 test is performed by an operator on a patient compulsorily in a specialized hub, which can be a hospital or a private hub. So the test performed will have all these characteristics.<br><br>
 The test will be evaluated by one or more analysis laboratories, which will provide the result. All the results received will then be saved.<br><br>
 When a hub is converted into a COVID-19 hub, it chooses a check agency in order to monitor its internal situation, which can optionally be used by the hub. If the check agency adheres, it will only be able to control a single COVID-19 hub per company policy. This information is then tracked.<br><br>
-Each city will have information relating to their lockdown condition, both currently and historically.<br><br>
+Each city will have information relating to their lockdown condition, both currently and historically.<br><br><br>
 # Tables Structure
 The first step of the project is to define the structure of the tables used in the database.
 #### Lockdown
@@ -78,6 +78,6 @@ The first step of the project is to define the structure of the tables used in t
 #### Result
 - This entity will contain several result of the COVID-19 test made by staff to patients. 
 - Each entry of the entity has a primary key (``test``, ``tipology``, ``lab``, ``date``), and a result.
-- A real test can be sent multiple times to different labs to obtain different results. A lab can analysze several tests. The relationship is N to N.<br>
+- A real test can be sent multiple times to different labs to obtain different results. A lab can analysze several tests. The relationship is N to N.<br><br><br>
 ## Entity-Realtionship Schema
-![](/ERSchema.png)<br><br>
+![](/ERSchema.png)<br><br><br>
