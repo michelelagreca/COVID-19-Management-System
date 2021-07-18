@@ -1,7 +1,13 @@
 # COVID-19 Management System
 This tutorial has been the final project of the course that I have taken in my Bachelor Degree of Computer Engineering with the Prof. Daniela Giordano: Database. <br><br>
 In this project it will be analyzed a relational database useful for the management of the COVID-19 virus pandemic. The technology used is Mysql, working with XAMPP.<br><br>
-## Tables Structure
+Various COVID-19 test models are tracked, which will have different characteristics. It also keeps track of various copies of the tests, which are useful for testing patients.<br><br>
+Each test model is observed by development teams, who improve it using different techniques. Then it will keep track of the various improvements made, and the various improved indices.<br><br>
+The test procedure through the COVID-19 test is performed by an operator on a patient compulsorily in a specialized hub, which can be a hospital or a private hub. So the test performed will have all these characteristics.<br><br>
+The test will be evaluated by one or more analysis laboratories, which will provide the result. All the results received will then be saved.<br><br>
+When a hub is converted into a COVID-19 hub, it chooses a check agency in order to monitor its internal situation, which can optionally be used by the hub. If the check agency adheres, it will only be able to control a single COVID-19 hub per company policy. This information is then tracked.<br><br>
+Each city will have information relating to their lockdown condition, both currently and historically.<br><br>
+# Tables Structure
 The first step of the project is to define the structure of the tables used in the database.
 #### Lockdown
 - This entity will contain several types of lockdown used in the world due to the pandemic.
