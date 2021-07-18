@@ -79,3 +79,5 @@ The first step of the project is to define the structure of the tables used in t
 - This entity will contain several result of the COVID-19 test made by staff to patients. 
 - Each entry of the entity has a primary key (``test``, ``tipology``, ``lab``, ``date``), and a result.
 - A real test can be sent multiple times to different labs to obtain different results. A lab can analysze several tests. The relationship is N to N.<br>
+## Entity-Realtionship Schema
+![](/ERSchema.png)<br><br>
