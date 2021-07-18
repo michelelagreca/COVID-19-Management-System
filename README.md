@@ -1,6 +1,7 @@
 # COVID-19 Management System
 This tutorial has been the final project of the course that I have taken in my Bachelor Degree of Computer Engineering with the Prof. Daniela Giordano: Database. <br><br>
 In this project it will be analyzed a relational database useful for the management of the COVID-19 virus pandemic. The technology used is Mysql, working with XAMPP.<br><br>
+# Approach
 Various COVID-19 test models are tracked, which will have different characteristics. It also keeps track of various copies of the tests, which are useful for testing patients.<br><br>
 Each test model is observed by development teams, who improve it using different techniques. Then it will keep track of the various improvements made, and the various improved indices.<br><br>
 The test procedure through the COVID-19 test is performed by an operator on a patient compulsorily in a specialized hub, which can be a hospital or a private hub. So the test performed will have all these characteristics.<br><br>
