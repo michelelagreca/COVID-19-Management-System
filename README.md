@@ -17,22 +17,22 @@ The first step of the project is to define the structure of the tables used in t
 #### Person
 - This entity will contain several people within the world.
 - Each entry of the entity has a primary key (``CF``), and other information, such as information regarding the type of death (for COVID-19 or not) and the date of the death.
-- ``city`` is a foreign key connected to the primary key of the city where the person is from.<br>
+- ``city`` is a foreign key connected to the primary key of the city where the person is from. This relationship is 1 to N: a person can only have a city, but a single city can have more people.<br>
 #### Staff
 - This entity will contain several workers in the world health business.
 - Each entry of the entity has a primary key (``CF``), and other information.
-- ``CF`` is a foreign key connected to the primary key of the person information of the staff. It is also the primary key of the staff worker.<br>
+- ``CF`` is a foreign key connected to the primary key of the person information of the staff. It is also the primary key of the staff worker. This relationship is 1 to 1: a person can only be a worker, and a worker corresponds to only a person.<br>
 #### Patient
 - This entity will contain several patients.
 - Each entry of the entity has a primary key (``CF``), and other information.
-- ``CF`` is a foreign key connected to the primary key of the person information of the staff. It is also the primary key of the patient.<br>
+- ``CF`` is a foreign key connected to the primary key of the person information of the staff. It is also the primary key of the patient. This relationship is 1 to 1: a person can only be a patient, and a patient corresponds to only a person.<br>
 #### Test
 - This entity will contain several types of test created to check if a person has the COVID-19 virus.
 - Each entry of the entity has a primary key (``ID``), and other information, such as the ``creation_date`` that has to be subsequent to a specific date.<br>
 #### Test Info
 - This entity will contain the information regarding a specific type of COVID-19 test.
 - Each entry of the entity has a primary key (``ID``), and other information.
-- ``ID`` is a foreign key connected to the primary key of the realtive type of COVID-19 test.<br>
+- ``ID`` is a foreign key connected to the primary key of the realtive type of COVID-19 test. This relationship is 1 to 1: a test has a specific set of information, and vice versa.<br>
 #### Developing Team
 - This entity will contain several teams that try to improve and make more correct and reliable the COVID-19 tests.
 - Each entry of the entity has a primary key (``ID``), and a name.<br>
@@ -42,7 +42,32 @@ The first step of the project is to define the structure of the tables used in t
 #### Technique Info
 - This entity will contain the information regarding a specific type of technique for improving the COVID-19 tests.
 - Each entry of the entity has a primary key (``name``), and other information.
-- ``name`` is a foreign key connected to the primary key of the realtive technique.<br>
+- ``name`` is a foreign key connected to the primary key of the realtive technique. This relationship is 1 to 1: a technique has a specific set of information, and vice versa.<br>
 #### Improvement
-- This entity will contain several improvements to improve COVID-19 test.
-- Each entry of the entity has a multiple py (``ID``, ``test``, ``team``, ``technique``) ation.
+- This entity will contain several improvements used to improve COVID-19 tests by a team using a specific technique.
+- Each entry of the entity has a multiple primary key (``ID``, ``test``, ``team``, ``technique``) and other information.
+- ``ID``, ``test``, ``team`` and ``technique`` are foreign keys connected to primary keys of Test, Developing Team and Technique entities. These three relationships are 1 to N: an improvement can use multiple times the same team / technique / test as content of the improvement. There will not be problem of duplicated primary key because each entry of this entity will also contain and ID.<br>
+#### Check Agency
+- This entity will contain several agency that periodically check a specific hub where COVID-19 tests are made. These controlls are about the hygiene.
+- Each entry of the entity has a primary key (``ID``), a name, an address, a place, and a checked hub.
+- ``place`` is a foreign key connected to the primary key of the city where the agency is located. It is a 1 to N relationship. ``checked_hub`` is a value that contain the ID of the COVID-19 hub checked by the agency. It is set using a trigger.<br>
+#### Hub
+- This entity will contain several hubs where COVID-19 tests are made.
+- Each entry of the entity has a primary key (``ID``), a name, an address, a place, and a check agency and a tipology (Hospital or Private Hub).
+- ``place`` is a foreign key connected to the primary key of the city where the hub is located. It is a 1 to N relationship. ``check_agency`` is a foreign key connected to the primary key of a check agency. This relationship is 1 to 1 with minimum cardinality 0 because an entity may not be controlled but if it is, it can only be controlled by a controlling company following an agreement made with that company at the time of conversion of the entity to an entity. COVID-19. Each company can not control COVID19 entities, but if it does, it can only control one for corporate privacy, since the information obtained must not be disclosed to other entities.<br>
+#### Hub Info
+- This entity will contain the information regarding a specific COVID-19 hub.
+- Each entry of the entity has a primary key (``ID``), and other information.
+- ``ID`` is a foreign key connected to the primary key of the relative COVID-19 hub. This relationship is 1 to 1: a hub has a specific set of information, and vice versa.<br>
+#### Real Test
+- While the entity Test described before contains a several model of COVID-19 test, this entity contains the real instances of each model, the copies that are going to be used to test the patients.
+- Each entry of the entity has a primary key (``ID``, ``tipology``), a staff worker that executes the test, a patient, a hub where the test is made, and a date.
+- The relationship are 1 to N.<br>
+#### Lab
+- This entity will contain several laboratories that analyze the real tests and give a result.
+- Each entry of the entity has a primary key (``ID``), a name, an address, a place.
+- ``place`` is a foreign key connected to the primary key of the city where the lab is located. It is a 1 to N relationship.<br>
+#### Result
+- This entity will contain several result of the COVID-19 test made by staff to patients. 
+- Each entry of the entity has a primary key (``test``, ``tipology``, ``lab``, ``date``), and a result.
+- A real test can be sent multiple times to different labs to obtain different results. A lab can analysze several tests. The relationship is N to N.<br>
