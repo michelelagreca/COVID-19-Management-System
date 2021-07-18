@@ -81,3 +81,8 @@ The first step of the project is to define the structure of the tables used in t
 - A real test can be sent multiple times to different labs to obtain different results. A lab can analysze several tests. The relationship is N to N.<br><br><br>
 ## Entity-Realtionship Schema
 ![](/ERSchema.png)<br><br><br>
+## Views
+#### Full Test
+This view joins real tests with the informations regarding the original COVID-19 test and its information.
+#### Full Test Plus
+This view joins the previous view with the results of the real tests.<br><br>
