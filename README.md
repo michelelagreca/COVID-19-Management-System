@@ -89,26 +89,26 @@ This view joins the previous view with the results of the real tests.<br><br><br
 # Triggers and business rules
 In addition to the tables, the database respects some rules and constraints in the insertion and management of data within it.
 #### No same lockdown
-In the History Lockdown relationship it is not possible to have lockdowns of the same city that start or end in the period of other lockdowns.
+- In the History Lockdown relationship it is not possible to have lockdowns of the same city that start or end in the period of other lockdowns.
 #### Update real efficacy
-In the Test Info entity there is an attribute, ``real_efficacy``, that is redundant and it depends to ``nominal_efficacy`` and ``structure``. Thus, once a test info is inserted, the system update ``real_efficacy`` subsequently. The real efficacy of a test is less than 1.5% of the nominal one if its structure is rigid, greater than 0.5% if it is flexible. Moreover, ``real_efficacy`` and ``nominal_efficacy`` are percentages and their value is between 0 and 99.99.
+- In the Test Info entity there is an attribute, ``real_efficacy``, that is redundant and it depends to ``nominal_efficacy`` and ``structure``. Thus, once a test info is inserted, the system update ``real_efficacy`` subsequently. The real efficacy of a test is less than 1.5% of the nominal one if its structure is rigid, greater than 0.5% if it is flexible. Moreover, ``real_efficacy`` and ``nominal_efficacy`` are percentages and their value is between 0 and 99.99.
 #### Improvement
-Each improvement made on a test influences its nominal efficacy, thus also the real efficacy. The value of the attribute ``improvement`` is added to the attribute ``nominal_efficacy`` of the test info of the improved test.
+- Each improvement made on a test influences its nominal efficacy, thus also the real efficacy. The value of the attribute ``improvement`` is added to the attribute ``nominal_efficacy`` of the test info of the improved test.
 #### Improvement date
-It is not possible to insert a test improvement if the test does not exists yet according to the improvement date.
+- It is not possible to insert a test improvement if the test does not exists yet according to the improvement date.
 #### Update check agency
-Once an hib is inserted in the database, it has an attribute, ``check_agency``, that says if a check agency controlls the hub. This trigger will update the attribute ``checked_hub`` in the check agency entity to the value of the Hub ID.
+- Once an hib is inserted in the database, it has an attribute, ``check_agency``, that says if a check agency controlls the hub. This trigger will update the attribute ``checked_hub`` in the check agency entity to the value of the Hub ID.
 #### No death
-A test cannot be entered if one of the operator and patient died on that date.
+- A test cannot be entered if one of the operator and patient died on that date.
 #### Date test
-A real test can not be inserted if the test date is earlier than the creation of the original test model.
+- A real test can not be inserted if the test date is earlier than the creation of the original test model.
 #### No same staff and patient
-It is not possible to insert a test where staff and patient are the same person, even if ii is possible that a staff got a test, and a patient is a staff and executed some tests.
+- It is not possible to insert a test where staff and patient are the same person, even if ii is possible that a staff got a test, and a patient is a staff and executed some tests.
 #### Result date
-It is not possible to insert a test result if the correspondent test was not made up to the result date. Morevover, the same test can be sent to several analysis laboratories but on different dates.
+- It is not possible to insert a test result if the correspondent test was not made up to the result date. Morevover, the same test can be sent to several analysis laboratories but on different dates.
 #### Result
-The value of a result has to be between 0 and 99.99. It is a float that goes from 0 to 100 and indicates: from 0 to 10 which is null, from 10 to 50 which is negative, greater than 50 which is positive. The condition of that particular patient will be updated accordingly.
+- The value of a result has to be between 0 and 99.99. It is a float that goes from 0 to 100 and indicates: from 0 to 10 which is null, from 10 to 50 which is negative, greater than 50 which is positive. The condition of that particular patient will be updated accordingly.
 #### Update patient condition
-After a test has received a result, the condition of the patient who got that test will be updated, regarding the result of the last test result chronologically.
+- After a test has received a result, the condition of the patient who got that test will be updated, regarding the result of the last test result chronologically.
 #### Quarantine
-If the last result of a test is higher that 50, the patient will have to stay in quarantine.
+- If the last result of a test is higher that 50, the patient will have to stay in quarantine.
