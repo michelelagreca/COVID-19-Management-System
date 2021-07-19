@@ -111,4 +111,25 @@ In addition to the tables, the database respects some rules and constraints in t
 #### Update patient condition
 - After a test has received a result, the condition of the patient who got that test will be updated, regarding the result of the last test result chronologically.
 #### Quarantine
-- If the last result of a test is higher that 50, the patient will have to stay in quarantine.
+- If the last result of a test is higher that 50, the patient will have to stay in quarantine.<br><br><br>
+# Procedures and opeations
+This section of the project will contain some procedures to interact with the database and its data.<br><br>
+#### Monitor Emergency Efficiency
+- Find the hospitals whose effectiveness of the emergency is less than a certain value and find the number of null tests performed by these hospitals.
+- This operation can be useful to monitor the correlation between the efficiency of the emergency and null tests performed (wrong) by a hospital.
+#### Average Tests per person
+- This operation allows you to find how many tests are done on average in a period by a patient (you can do the analysis between two dates).
+- This operation is useful to see how many tests are done on average by a patient during a phase of the pandemic which may depend on the chosen period. It is therefore possible to monitor the tendency that people have to test in different phases of the pandemic.
+#### Positives in a period
+- This operation allows you to find in a given period the number of swabs performed and the number of positive ones (take the last one sent in that period as the result of a test).
+- This operation allows you to calculate an important statistic to see the relationship between tests done and positive.
+#### Dead and positives in lockdown
+- This operation allows you to find all the people who have died from COVID19 when the cities of residence have been in a certain type of lockdown, and to view the patients who are currently positive in those cities if the current lockdown is of the same type.
+- This operation allows you to find mortality rates based on the types of lockdowns adopted.
+#### City with highest n. in quarantine
+- Find the city currently in a certain type of lockdown that has the most people under quarantine.
+- This operation finds the patient's condition based on the type of lockdown adopted.
+#### Efficacy comparing
+- This operation allows you to choose an improvement from a test done in the past and check the real effectiveness of the test before and after in the improvement itself.
+#### Best lab
+- It allow to find those labs which provided the most positive results.
